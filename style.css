@@ -1,5 +1,7 @@
+/* ===== Polices Google Fonts ===== */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
 
+/* ===== Variables de couleur, reutilisees partout dans le fichier ===== */
 :root {
   --navy: #0E2A47;
   --navy-dark: #081B2E;
@@ -11,6 +13,7 @@
   --border: #DDE2E8;
 }
 
+/* Applique box-sizing partout: padding/border comptes dans la largeur totale */
 * { box-sizing: border-box; }
 
 body {
@@ -22,7 +25,7 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ---------- Barre utilitaire ---------- */
+/* ===== Barre utilitaire (tout en haut) ===== */
 .utility-bar {
   background: var(--navy-dark);
   color: rgba(255,255,255,0.75);
@@ -41,7 +44,7 @@ a { text-decoration: none; color: inherit; }
 .utility-right .lang.active { opacity: 1; font-weight: 600; color: var(--gold); }
 .utility-right .divider { opacity: 0.3; }
 
-/* ---------- Nav principale ---------- */
+/* ===== Nav principale (logo, liens, bouton connexion) ===== */
 .main-nav {
   background: var(--navy);
   padding: 14px 40px;
@@ -58,6 +61,7 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.2px;
 }
 
+/* flex: 1 pousse le bouton "Se connecter" tout a droite */
 .nav-links {
   display: flex;
   gap: 26px;
@@ -75,6 +79,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--gold);
 }
 
+/* Bouton principal de la nav, en or */
 .btn-client {
   background: var(--gold);
   color: var(--navy-dark);
@@ -86,13 +91,7 @@ a { text-decoration: none; color: inherit; }
 
 .btn-client:hover { opacity: 0.92; }
 
-@media (max-width: 900px) {
-  .utility-bar { padding: 6px 20px; }
-  .main-nav { flex-wrap: wrap; padding: 14px 20px; gap: 14px; }
-  .nav-links { order: 3; width: 100%; flex-wrap: wrap; gap: 16px; }
-}
-
-/* ---------- Hero ---------- */
+/* ===== Hero: titre + convertisseur cote a cote ===== */
 .hero {
   display: flex;
   gap: 48px;
@@ -104,6 +103,7 @@ a { text-decoration: none; color: inherit; }
 
 .hero-text { flex: 1.2; }
 
+/* Petit label au-dessus des titres de section, reutilise ailleurs (services, about) */
 .eyebrow {
   display: inline-block;
   background: #FBF2DA;
@@ -155,7 +155,7 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-secondary:hover { background: rgba(14,42,71,0.05); }
 
-/* ---------- Convertisseur ---------- */
+/* ===== Widget convertisseur (utilise sur index.html et dashboard.html) ===== */
 .converter-card {
   flex: 1;
   background: var(--white);
@@ -177,12 +177,14 @@ a { text-decoration: none; color: inherit; }
   margin: 0 0 18px;
 }
 
+/* Une ligne = un champ montant + un menu deroulant devise */
 .field-row {
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
 }
 
+/* Police monospace pour les chiffres: alignement propre, look "releve bancaire" */
 .field-row input, .field-row select {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 14px;
@@ -214,11 +216,7 @@ a { text-decoration: none; color: inherit; }
   margin: 14px 0 0;
 }
 
-@media (max-width: 900px) {
-  .hero { flex-direction: column; padding: 40px 20px; }
-}
-
-/* ---------- Services ---------- */
+/* ===== Section Services (grille de 4 cartes) ===== */
 .services {
   background: var(--white);
   border-top: 1px solid var(--border);
@@ -251,6 +249,7 @@ a { text-decoration: none; color: inherit; }
   padding: 22px 18px;
 }
 
+/* Numero 01/02/03/04 dans un carre, au lieu d'une icone decorative */
 .service-icon {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 13px;
@@ -280,16 +279,7 @@ a { text-decoration: none; color: inherit; }
   margin: 0;
 }
 
-@media (max-width: 900px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .services-inner { padding: 40px 20px; }
-}
-
-@media (max-width: 560px) {
-  .services-grid { grid-template-columns: 1fr; }
-}
-
-/* ---------- A propos ---------- */
+/* ===== Section A propos (texte + 3 stats) ===== */
 .about-inner {
   max-width: 1180px;
   margin: 0 auto;
@@ -298,7 +288,6 @@ a { text-decoration: none; color: inherit; }
 
 .about-text { max-width: 640px; }
 
-.about h2,
 .about-text h2 {
   font-family: 'IBM Plex Serif', serif;
   font-size: 26px;
@@ -335,12 +324,172 @@ a { text-decoration: none; color: inherit; }
   margin: 0;
 }
 
-@media (max-width: 900px) {
-  .about-inner { padding: 40px 20px; }
-  .about-stats { flex-wrap: wrap; gap: 24px; }
+/* ===== Formulaire de connexion (login.html) ===== */
+.login-wrap {
+  min-height: calc(100vh - 130px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
 }
 
-/* ---------- Footer ---------- */
+.login-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 32px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-card h2 {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 22px;
+  color: var(--navy);
+  margin: 10px 0 4px;
+}
+
+.login-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.btn-full { width: 100%; margin-top: 8px; padding: 12px; }
+
+.login-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* ===== Dashboard (dashboard.html) ===== */
+.dash-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 40px;
+}
+
+.dash-header { margin-bottom: 24px; }
+
+.dash-header h2 {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 22px;
+  color: var(--navy);
+}
+
+.dash-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 4px 0 0;
+}
+
+/* 3 cartes: solde, dernier virement, taux de change */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.metric-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px;
+}
+
+.metric-label { font-size: 13px; color: var(--text-muted); margin: 0 0 6px; }
+
+.metric-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--navy);
+  margin: 0;
+}
+
+.metric-delta { font-size: 12px; margin: 4px 0 0; }
+.metric-delta.up { color: #1D9E75; }
+.metric-delta.down { color: var(--text-muted); }
+
+/* 2 colonnes: transactions a gauche, convertisseur a droite */
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 16px;
+}
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+/* Bordure doree pour distinguer le panneau convertisseur */
+.panel.accent { border: 2px solid var(--gold); }
+
+.panel h3 {
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 15px;
+  color: var(--navy);
+  margin: 0 0 14px;
+}
+
+/* Une ligne de transaction: nom+date a gauche, montant a droite */
+.tx-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.tx-row:last-child { border-bottom: none; }
+
+.tx-name { font-size: 14px; margin: 0; color: var(--text); }
+.tx-meta { font-size: 12px; margin: 2px 0 0; color: var(--text-muted); }
+
+.tx-amount {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  margin: 0;
+}
+.tx-amount.negative { color: #C0392B; }
+.tx-amount.positive { color: #1D9E75; }
+
+.badge-mini {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  background: #FBF2DA;
+  color: #7A5C10;
+  padding: 3px 10px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+
+/* ===== Footer ===== */
 .site-footer {
   background: var(--navy-dark);
   color: rgba(255,255,255,0.7);
@@ -400,174 +549,19 @@ a { text-decoration: none; color: inherit; }
   color: rgba(255,255,255,0.5);
 }
 
+/* ===== Version mobile: tout passe en une colonne sous 900px ===== */
 @media (max-width: 900px) {
+  .utility-bar { padding: 6px 20px; }
+  .main-nav { flex-wrap: wrap; padding: 14px 20px; gap: 14px; }
+  .nav-links { order: 3; width: 100%; flex-wrap: wrap; gap: 16px; }
+  .hero { flex-direction: column; padding: 40px 20px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-inner, .about-inner, .dash-wrap { padding: 40px 20px; }
+  .about-stats { flex-wrap: wrap; gap: 24px; }
+  .metric-grid, .dash-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; padding: 40px 20px 24px; }
 }
 
-
-/* ---------- Login ---------- */
-.login-wrap {
-  min-height: calc(100vh - 130px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-
-.login-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 32px;
-  width: 100%;
-  max-width: 380px;
-}
-
-.login-card h2 {
-  font-family: 'IBM Plex Serif', serif;
-  font-size: 22px;
-  color: var(--navy);
-  margin: 10px 0 4px;
-}
-
-.login-sub {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin: 0 0 24px;
-}
-
-.form-group { margin-bottom: 16px; }
-
-.form-group label {
-  display: block;
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: var(--text);
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 14px;
-  font-family: 'IBM Plex Sans', sans-serif;
-}
-
-.btn-full { width: 100%; margin-top: 8px; padding: 12px; }
-
-.login-hint {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 16px;
-  text-align: center;
-}
-
-
-/* ---------- Dashboard ---------- */
-.dash-wrap {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 32px 40px;
-}
-
-.dash-header { margin-bottom: 24px; }
-
-.dash-header h2 {
-  font-family: 'IBM Plex Serif', serif;
-  font-size: 22px;
-  color: var(--navy);
-}
-
-.dash-header p {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin: 4px 0 0;
-}
-
-.metric-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.metric-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 18px;
-}
-
-.metric-label { font-size: 13px; color: var(--text-muted); margin: 0 0 6px; }
-
-.metric-value {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--navy);
-  margin: 0;
-}
-
-.metric-delta { font-size: 12px; margin: 4px 0 0; }
-.metric-delta.up { color: #1D9E75; }
-.metric-delta.down { color: var(--text-muted); }
-
-.dash-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 16px;
-}
-
-.panel {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 20px;
-}
-
-.panel.accent { border: 2px solid var(--gold); }
-
-.panel h3 {
-  font-family: 'IBM Plex Serif', serif;
-  font-size: 15px;
-  color: var(--navy);
-  margin: 0 0 14px;
-}
-
-.tx-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.tx-row:last-child { border-bottom: none; }
-
-.tx-name { font-size: 14px; margin: 0; color: var(--text); }
-.tx-meta { font-size: 12px; margin: 2px 0 0; color: var(--text-muted); }
-
-.tx-amount {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px;
-  margin: 0;
-}
-.tx-amount.negative { color: #C0392B; }
-.tx-amount.positive { color: #1D9E75; }
-
-.badge-mini {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  background: #FBF2DA;
-  color: #7A5C10;
-  padding: 3px 10px;
-  border-radius: 3px;
-  margin-bottom: 12px;
-}
-
-@media (max-width: 900px) {
-  .metric-grid, .dash-grid { grid-template-columns: 1fr; }
-  .dash-wrap { padding: 24px 20px; }
+@media (max-width: 560px) {
+  .services-grid { grid-template-columns: 1fr; }
 }
